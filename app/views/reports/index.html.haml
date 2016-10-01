@@ -2,7 +2,7 @@
 - @notes.each do |note|
   .note
     .note-name
-      %h2= note.user.email
+      %h2= note.user.name
       = link_to fa_icon('edit', text: '編集'), edit_note_path(note)
     .note-author
       = simple_format note.content
