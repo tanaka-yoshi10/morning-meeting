@@ -1,8 +1,13 @@
 %h1= @date.strftime("%Y-%m-%d")
-- @notes.each do |note|
+- @users.each do |user|
   .note
     .note-name
-      %h2= note.user.name
-      = link_to fa_icon('edit', text: '編集'), edit_note_path(note)
+      %h2= user.name
+      - note = user.notes.with_date(@date).first
+      - if note
+        = link_to fa_icon('edit', text: '編集'), edit_note_path(note)
+      - else
+        = link_to fa_icon('edit', text: '編集'), new_note_path
     .note-author
-      = simple_format note.content
+      - if note
+        = simple_format note.content
