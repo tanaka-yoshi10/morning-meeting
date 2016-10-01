@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @note
+= link_to 'Show', [@user, @note]
 \|
-= link_to 'Back', notes_path
+= link_to 'Back', user_notes_path(@user)

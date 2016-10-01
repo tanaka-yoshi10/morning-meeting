@@ -4,10 +4,7 @@
     .note-name
       %h2= user.name
       - note = user.notes.with_date(@date).first
-      - if note
-        = link_to fa_icon('edit', text: '編集'), edit_note_path(note)
-      - else
-        = link_to fa_icon('edit', text: '編集'), new_note_path
+      = link_to fa_icon('edit', text: '編集'), note ? edit_user_note_path(user, note) : new_user_note_path(user)
     .note-author
       - if note
         = simple_format note.content
