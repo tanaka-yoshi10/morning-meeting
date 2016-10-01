@@ -15,6 +15,7 @@ gem 'bootstrap-sass', '>= 3.0.3.0'
 gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'simple_form'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platform: :mri
