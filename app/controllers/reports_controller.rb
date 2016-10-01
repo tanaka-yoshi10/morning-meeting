@@ -1,6 +1,12 @@
 class ReportsController < ApplicationController
+  before_action :set_date
+
   def index
-    @date = Time.now
-    @users = User.all
+    @users = User.all # TODO: 報告対象者だけに絞る
   end
+
+  private
+    def set_date
+      @date = Time.parse(params[:date]) || Time.now
+    end
 end
