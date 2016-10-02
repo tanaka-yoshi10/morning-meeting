@@ -1,6 +1,8 @@
-%h1= @date
+%h1= @note.date.strftime("%Y-%m-%d")
 
 = simple_form_for [@user, @note] do |f|
   = f.input :date, as: :hidden
   = f.input :content, as: :text, input_html: {rows: 10}
   = f.button :submit
+
+= link_to 'Back', root_path(date: @note.date)

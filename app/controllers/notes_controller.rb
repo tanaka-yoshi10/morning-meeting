@@ -1,6 +1,5 @@
 class NotesController < ApplicationController
   before_action :set_user
-  before_action :set_date, only: [:new]
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -11,7 +10,8 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note = @user.notes.new(date: @date)
+    date = params[:date] ? Time.parse(params[:date]) : Time.now
+    @note = @user.notes.new(date: date)
   end
 
   def edit
@@ -22,7 +22,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to [@user, @note], notice: 'Note was successfully created.' }
+        format.html { redirect_to root_path(date: @note.date), notice: 'Note was successfully created.' }
       else
         format.html { render :new }
       end
@@ -32,7 +32,7 @@ class NotesController < ApplicationController
   def update
     respond_to do |format|
       if @note.update(note_params)
-        format.html { redirect_to [@user, @note], notice: 'Note was successfully updated.' }
+        format.html { redirect_to root_path(date: @note.date), notice: 'Note was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -49,10 +49,6 @@ class NotesController < ApplicationController
   private
     def set_user
       @user = User.find(params[:user_id])
-    end
-
-    def set_date
-      @date = params[:date] ? Time.parse(params[:date]) : Time.now
     end
 
     def set_note

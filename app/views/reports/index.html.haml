@@ -6,10 +6,10 @@
 =link_to "メール送信用フォーマット", reports_path(:format => :text, date: @date)
 - @users.each do |user|
   .note
-    .note-name
-      %h2= user.name
+    .note-title
+      %h2.note-author= user.name
       - note = user.notes.with_date(@date).first
-      = link_to fa_icon('edit', text: '編集'), note ? edit_user_note_path(user, note) : new_user_note_path(user, date: @date.strftime("%Y-%m-%d"))
-    .note-author
+      = link_to fa_icon('edit', text: '編集'), note ? edit_user_note_path(user, note) : new_user_note_path(user, date: @date.strftime("%Y-%m-%d")), class: 'note-edit-link'
+    .note-content
       - if note
         = simple_format note.content
