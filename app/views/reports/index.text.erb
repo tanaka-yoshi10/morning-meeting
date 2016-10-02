@@ -1,0 +1,10 @@
+<%= @date.strftime("%Y-%m-%d") %>
+
+<% @users.each do |user| %>
+<%= user.name %>
+<% note = user.notes.with_date(@date).first %>
+<% if note %>
+<%= indent(note.content, 1) %>
+
+<% end %>
+<% end %>

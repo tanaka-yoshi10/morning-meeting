@@ -3,6 +3,7 @@
   %h1.report_title_item= @date.strftime("%Y-%m-%d")
   %p.report_title_item= link_to '>>' ,root_path(date: @date.tomorrow.strftime("%Y-%m-%d"))
 
+=link_to "メール送信用フォーマット", reports_path(:format => :text, date: @date)
 - @users.each do |user|
   .note
     .note-name
