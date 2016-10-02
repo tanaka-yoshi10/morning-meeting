@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_user
+  before_action :set_date, only: [:new]
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -11,7 +12,7 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note = @user.notes.new
+    @note = @user.notes.new(date: @date)
   end
 
   def edit
@@ -49,6 +50,10 @@ class NotesController < ApplicationController
   private
     def set_user
       @user = User.find(params[:user_id])
+    end
+
+    def set_date
+      @date = params[:date] ? Time.parse(params[:date]) : Time.now
     end
 
     def set_note
