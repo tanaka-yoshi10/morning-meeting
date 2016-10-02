@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :users do
     resources :notes
   end
-  devise_for :users
   root to: "reports#index"
 end
