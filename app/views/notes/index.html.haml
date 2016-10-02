@@ -15,11 +15,11 @@
       %tr
         %td= note.date
         %td= note.content
-        %td= note.user
-        %td= link_to 'Show', note
-        %td= link_to 'Edit', edit_note_path(note)
-        %td= link_to 'Destroy', note, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= note.user.name
+        %td= link_to 'Show', [@user, note]
+        %td= link_to 'Edit', edit_user_note_path(@user, note)
+        %td= link_to 'Destroy', [@user, note], :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Note', new_note_path
+= link_to 'New Note', new_user_note_path(@user)
