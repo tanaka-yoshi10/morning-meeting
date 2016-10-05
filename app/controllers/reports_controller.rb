@@ -7,6 +7,6 @@ class ReportsController < ApplicationController
 
   private
     def set_date
-      @date = params[:date] ? Time.parse(params[:date]) : Time.now
+      @date = params[:date] ? Date.parse(params[:date]) : Date.today
     end
 end

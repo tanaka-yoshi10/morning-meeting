@@ -1,4 +1,4 @@
-%h1= @note.date.strftime("%Y-%m-%d")
+%h1= l @note.date, format: :long
 
 = simple_form_for [@user, @note] do |f|
   = f.input :date, as: :hidden

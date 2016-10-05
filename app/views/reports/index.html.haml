@@ -1,6 +1,6 @@
 .report_title
   %p.report_title_item= link_to '<<' ,root_path(date: @date.yesterday.strftime("%Y-%m-%d"))
-  %h1.report_title_item= @date.strftime("%Y-%m-%d")
+  %h1.report_title_item= l @date, format: :long
   %p.report_title_item= link_to '>>' ,root_path(date: @date.tomorrow.strftime("%Y-%m-%d"))
 
 =link_to "メール送信用フォーマット", reports_path(:format => :text, date: @date)

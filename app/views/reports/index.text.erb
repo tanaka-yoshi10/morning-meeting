@@ -1,4 +1,4 @@
-<%= @date.strftime("%Y-%m-%d") %>
+<%= l @date, format: :long %>
 
 <% @users.each do |user| %>
 <%= user.name %>

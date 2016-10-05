@@ -10,7 +10,7 @@ class NotesController < ApplicationController
   end
 
   def new
-    date = params[:date] ? Time.parse(params[:date]) : Time.now
+    date = params[:date] ? Date.parse(params[:date]) : Date.now
     @note = @user.notes.new(date: date)
   end
 
